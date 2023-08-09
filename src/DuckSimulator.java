@@ -1,6 +1,8 @@
 import duck.*;
 import goose.Goose;
 import goose.GooseAdpater;
+import pigeon.Pigeon;
+import pigeon.PigeonAdapter;
 
 public class DuckSimulator {
     public static void main(String[] args) {
@@ -17,6 +19,7 @@ public class DuckSimulator {
         Quackable rubberDuck = duckFactory.createRubberDuck();
 
         Quackable gooseDuck = new GooseAdpater(new Goose());
+        Quackable pigeon = new PigeonAdapter(new Pigeon());
 
         System.out.println("\nDuck Simulator: With Abstract Factory");
 
@@ -26,6 +29,7 @@ public class DuckSimulator {
         flockOfDucks.add(duckCall);
         flockOfDucks.add(rubberDuck);
         flockOfDucks.add(gooseDuck);
+        flockOfDucks.add(pigeon);
 
         Flock flockOfMallards = new Flock();
 
