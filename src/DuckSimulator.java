@@ -7,12 +7,16 @@ import pigeon.PigeonAdapter;
 public class DuckSimulator {
     public static void main(String[] args) {
         DuckSimulator simulator = new DuckSimulator();
-        AbstractDuckFactory duckFactory = new CountingDuckFactory();
+        AbstractDuckFactory duckFactory = new DuckFactory();
+        AbstractDuckFactory countDuckFactory = new CountingDuckFactory();
+        AbstractDuckFactory echoCountDuckFactory = new EchoCountingDuckFactory();
 
-        simulator.simulate(duckFactory);
+//        simulator.simulate(duckFactory, "No decorator");
+//        simulator.simulate(countDuckFactory, "With counter decorator");
+        simulator.simulate(echoCountDuckFactory, "With counter decorator and echo decorator");
     }
 
-    void simulate(AbstractDuckFactory duckFactory) {
+    void simulate(AbstractDuckFactory duckFactory, String simulationName) {
         // [1] - Quack 4 times
 //        Quackable mallardDuck = new QuackCounter(new QuackEcho(new MallardDuck()));
 //        Quackable redheadDuck = new QuackCounter(new QuackEcho(new RedheadDuck()));
@@ -20,18 +24,18 @@ public class DuckSimulator {
 //        Quackable rubberDuck = new QuackCounter(new QuackEcho(new RubberDuck()));
 
         // [2] - Quack 8 times
-        Quackable mallardDuck = new QuackEcho(new QuackCounter(new MallardDuck()));
-        Quackable redheadDuck = new QuackEcho(new QuackCounter(new RedheadDuck()));
-        Quackable duckCall = new QuackEcho(new QuackCounter(new DuckCall()));
-        Quackable rubberDuck = new QuackEcho(new QuackCounter(new RubberDuck()));
+//        Quackable mallardDuck = new QuackEcho(new QuackCounter(new MallardDuck()));
+//        Quackable redheadDuck = new QuackEcho(new QuackCounter(new RedheadDuck()));
+//        Quackable duckCall = new QuackEcho(new QuackCounter(new DuckCall()));
+//        Quackable rubberDuck = new QuackEcho(new QuackCounter(new RubberDuck()));
 
-//        Quackable mallardDuck = duckFactory.createMailardDuck();
-//        Quackable redheadDuck = duckFactory.createRedheadDuck();
-//        Quackable duckCall = duckFactory.createDuckCall();
-//        Quackable rubberDuck = duckFactory.createRubberDuck();
+        Quackable mallardDuck = duckFactory.createMallardDuck();
+        Quackable redheadDuck = duckFactory.createRedheadDuck();
+        Quackable duckCall = duckFactory.createDuckCall();
+        Quackable rubberDuck = duckFactory.createRubberDuck();
 //
-//        Quackable gooseDuck = new GooseAdpater(new Goose());
-//        Quackable pigeon = new PigeonAdapter(new Pigeon());
+        Quackable gooseDuck = new GooseAdpater(new Goose());
+        Quackable pigeon = new PigeonAdapter(new Pigeon());
 //
 //        System.out.println("\nDuck Simulator: With Abstract Factory");
 //
@@ -41,15 +45,15 @@ public class DuckSimulator {
         flockOfDucks.add(redheadDuck);
         flockOfDucks.add(duckCall);
         flockOfDucks.add(rubberDuck);
-//        flockOfDucks.add(gooseDuck);
-//        flockOfDucks.add(pigeon);
+        flockOfDucks.add(gooseDuck);
+        flockOfDucks.add(pigeon);
 //
 //        Flock flockOfMallards = new Flock();
 //
-//        Quackable mallardOne = duckFactory.createMailardDuck();
-//        Quackable mallardTwo = duckFactory.createMailardDuck();
-//        Quackable mallardThree = duckFactory.createMailardDuck();
-//        Quackable mallardFour = duckFactory.createMailardDuck();
+//        Quackable mallardOne = duckFactory.createMallardDuck();
+//        Quackable mallardTwo = duckFactory.createMallardDuck();
+//        Quackable mallardThree = duckFactory.createMallardDuck();
+//        Quackable mallardFour = duckFactory.createMallardDuck();
 //
 //        flockOfMallards.add(mallardOne);
 //        flockOfMallards.add(mallardTwo);
@@ -58,7 +62,7 @@ public class DuckSimulator {
 //
 //        flockOfDucks.add(flockOfMallards);
 //
-        System.out.println("\nDuck Simulator: Whole Flock Simulation");
+        System.out.println("\nDuck Simulator: " + simulationName);
         simulate(flockOfDucks);
 //
 //        System.out.println("\nDuck Simulator: Mallard Flock Simulation");

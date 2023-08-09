@@ -2,7 +2,7 @@ package duck;
 
 public class DuckFactory extends AbstractDuckFactory {
     @Override
-    public Quackable createMailardDuck() {
+    public Quackable createMallardDuck() {
         return new MallardDuck();
     }
 

@@ -3,7 +3,7 @@ package duck;
 public class CountingDuckFactory extends AbstractDuckFactory {
 
     @Override
-    public Quackable createMailardDuck() {
+    public Quackable createMallardDuck() {
         return new QuackCounter(new MallardDuck());
     }
 
