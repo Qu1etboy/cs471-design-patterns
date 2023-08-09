@@ -12,8 +12,8 @@ public class DuckSimulator {
         AbstractDuckFactory echoCountDuckFactory = new EchoCountingDuckFactory();
 
 //        simulator.simulate(duckFactory, "No decorator");
-//        simulator.simulate(countDuckFactory, "With counter decorator");
-        simulator.simulate(echoCountDuckFactory, "With counter decorator and echo decorator");
+        simulator.simulate(countDuckFactory, "With counter decorator");
+//        simulator.simulate(echoCountDuckFactory, "With counter decorator and echo decorator");
     }
 
     void simulate(AbstractDuckFactory duckFactory, String simulationName) {
@@ -33,12 +33,10 @@ public class DuckSimulator {
         Quackable redheadDuck = duckFactory.createRedheadDuck();
         Quackable duckCall = duckFactory.createDuckCall();
         Quackable rubberDuck = duckFactory.createRubberDuck();
-//
+
         Quackable gooseDuck = new GooseAdpater(new Goose());
         Quackable pigeon = new PigeonAdapter(new Pigeon());
-//
-//        System.out.println("\nDuck Simulator: With Abstract Factory");
-//
+
         Flock flockOfDucks = new Flock();
 
         flockOfDucks.add(mallardDuck);
@@ -47,24 +45,24 @@ public class DuckSimulator {
         flockOfDucks.add(rubberDuck);
         flockOfDucks.add(gooseDuck);
         flockOfDucks.add(pigeon);
-//
-//        Flock flockOfMallards = new Flock();
-//
-//        Quackable mallardOne = duckFactory.createMallardDuck();
-//        Quackable mallardTwo = duckFactory.createMallardDuck();
-//        Quackable mallardThree = duckFactory.createMallardDuck();
-//        Quackable mallardFour = duckFactory.createMallardDuck();
-//
-//        flockOfMallards.add(mallardOne);
-//        flockOfMallards.add(mallardTwo);
-//        flockOfMallards.add(mallardThree);
-//        flockOfMallards.add(mallardFour);
-//
-//        flockOfDucks.add(flockOfMallards);
-//
+
+        Flock flockOfMallards = new Flock();
+
+        Quackable mallardOne = duckFactory.createMallardDuck();
+        Quackable mallardTwo = duckFactory.createMallardDuck();
+        Quackable mallardThree = duckFactory.createMallardDuck();
+        Quackable mallardFour = duckFactory.createMallardDuck();
+
+        flockOfMallards.add(mallardOne);
+        flockOfMallards.add(mallardTwo);
+        flockOfMallards.add(mallardThree);
+        flockOfMallards.add(mallardFour);
+
+        flockOfDucks.add(flockOfMallards);
+
         System.out.println("\nDuck Simulator: " + simulationName);
         simulate(flockOfDucks);
-//
+
 //        System.out.println("\nDuck Simulator: Mallard Flock Simulation");
 //        simulate(flockOfMallards);
 
